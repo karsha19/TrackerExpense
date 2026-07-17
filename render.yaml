@@ -25,7 +25,7 @@ services:
     staticPublishPath: dist
     envVars:
       - key:VITE_API_URL
-        value: https://expense-tracker-backend.onrender.com   # update after first deploy
+        value: https://trackerexpense-2.onrender.com   # update after first deploy
     routes:
       - type: rewrite
         source: /*
