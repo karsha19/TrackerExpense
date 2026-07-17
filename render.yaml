@@ -1,0 +1,32 @@
+services:
+  # ─────────────────────────────────────────
+  # Backend – FastAPI (Python)
+  # ─────────────────────────────────────────
+  - type: web
+    name: expense-tracker-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true       # Render auto-generates a random secret
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  # ─────────────────────────────────────────
+  # Frontend – React + Vite (Static Site)
+  # ─────────────────────────────────────────
+  - type: web
+    name: expense-tracker-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key:VITE_API_URL
+        value: https://expense-tracker-backend.onrender.com   # update after first deploy
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html   # needed for React Router client-side routing
