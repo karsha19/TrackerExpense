@@ -22,3 +22,21 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python
+__pycache__/
+*.pyc
+
+# Database
+expense_tracker.db
+
+
+
+# Virtual environment
+venv/
+.venv/
+
+# React
+node_modules/
+dist/
+api.js
