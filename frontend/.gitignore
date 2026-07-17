@@ -38,4 +38,3 @@ venv/
 # React
 node_modules/
 dist/
-api.js
